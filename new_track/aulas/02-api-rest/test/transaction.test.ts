@@ -26,7 +26,7 @@ describe('Transactions routes', () => {
       .post('/transactions')
       .send({
         title: 'New transaction',
-        amont: 500,
+        amount: 500,
         type: 'credit',
       })
       .expect(201)
@@ -37,7 +37,7 @@ describe('Transactions routes', () => {
       .post('/transactions')
       .send({
         title: 'New transaction',
-        amont: 500,
+        amount: 500,
         type: 'credit',
       })
 
@@ -51,7 +51,7 @@ describe('Transactions routes', () => {
     expect(listTransactionResponse.body.transactions).toEqual([
       expect.objectContaining({
         title: 'New transaction',
-        amont: 500,
+        amount: 500,
       }),
     ])
   })
@@ -61,7 +61,7 @@ describe('Transactions routes', () => {
       .post('/transactions')
       .send({
         title: 'New transaction',
-        amont: 500,
+        amount: 500,
         type: 'credit',
       })
 
@@ -72,7 +72,7 @@ describe('Transactions routes', () => {
       .set('Cookie', cookies)
       .expect(200)
 
-    const transactionId = listTransactionResponse.body.transaction[0].id
+    const transactionId = listTransactionResponse.body.transactions[0].id
 
     const getTransactionResponse = await request(app.server)
       .get(`/transactions/${transactionId}`)
@@ -82,7 +82,7 @@ describe('Transactions routes', () => {
     expect(getTransactionResponse.body.transaction).toEqual(
       expect.objectContaining({
         title: 'New transaction',
-        amont: 500,
+        amount: 500,
       }),
     )
   })
@@ -92,7 +92,7 @@ describe('Transactions routes', () => {
       .post('/transactions')
       .send({
         title: 'Credit transaction',
-        amont: 5000,
+        amount: 5000,
         type: 'credit',
       })
 
@@ -103,8 +103,8 @@ describe('Transactions routes', () => {
       .set('Cookie', cookies)
       .send({
         title: 'Debit transaction',
-        amont: 2000,
-        type: 'credit',
+        amount: 2000,
+        type: 'debit',
       })
 
     const summaryResponse = await request(app.server)
