@@ -9,3 +9,9 @@
 - [ ] O usuário só pode visualizar transações que ele criou;
 # Regras Não Funcionais(RNF)
 - [ ] Será criado ao longo da aplicação;
+# Comandos utilizados
+- 5/1
+npm i tsup -D
+node run build
+node build/server.js
+npm i pg
