@@ -122,6 +122,29 @@ describe('Meals routes', () => {
       not_diet_meals: 1,
     })
   })
+
+  it('should be able to update a meal', async () => {
+    const userId = await createUser()
+
+    await request(app.server)
+      .put(`/meals/${userId}`)
+      .send({
+        id: crypto.randomUUID(),
+        name: 'Café com torradas integrais - edited',
+        description: 'primeira refeição - edited',
+        date: '2023-05-13',
+        hour: '06:00',
+        userId,
+        isDiet: true,
+      })
+      .expect(204)
+  })
+
+  it('should be able to delete a meal', async () => {
+    const userId = await createUser()
+
+    await request(app.server).delete(`/meals/${userId}`).send().expect(204)
+  })
 })
 
 function resetDatabase() {
