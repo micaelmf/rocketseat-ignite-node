@@ -1,0 +1,32 @@
+{
+  "name": "03-api-solid",
+  "version": "1.0.0",
+  "description": "Deve ser possível se cadastrar;     Deve ser possível se autenticar;     Deve ser possível obter o perfil de um usuário logado;     Deve ser possível obter o número de check-ins realizados pelo usuário logado;     Deve ser possível obter seu histórico de check-ins;     Deve ser possível o usuário buscar academias próximas;     Deve ser possível o usuário buscar academias pelo nome;     Deve ser possível realizar check-in em uma academia;     Deve ser possível validar o check-in de um usuário;     Deve ser possível cadastrar uma academia; # RNs (Regras de negócio)     O usuário não deve poder se cadastrar com um e-mail duplicado;     O usuário não pode fazer 2 check-ins no mesmo dia;     O usuário não pode fazer check-in se não estiver perto (100m) da academia;     O check-in só pode ser validada até 20 minutos após ser criado;     O check-in só pode ser validado por administradores;     A academia só pode ser cadastrada por administradores;     RNFs (Requisitos não-funcionais)     A senha do usuário precisa estar criptografada;     Os dados da aplicação precisam estar persistidos em um banco PostgreSQL;     Todas listas de dados precisam estar paginadas com 20 itens por página;     O usuário deve ser identificado por um JWT (JSON Web Token);",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "1.2.0",
+    "@types/bcryptjs": "2.4.2",
+    "@types/node": "^20.1.4",
+    "eslint": "8.40.0",
+    "prisma": "4.14.0",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@prisma/client": "4.14.0",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.0.3",
+    "fastify": "^4.17.0",
+    "zod": "3.21.4"
+  }
+}
